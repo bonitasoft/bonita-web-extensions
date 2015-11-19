@@ -4,8 +4,31 @@
 	<groupId>org.bonitasoft.web</groupId>
 	<artifactId>bonita-web-extensions</artifactId>
 	<version>7.2.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
 	<name>Bonita Web Extensions</name>
 	<description>Provide API to develop custom web extensions like pages and rest apis</description>
+	<url>http://www.bonitasoft.com</url>
+
+	<organization>
+		<name>Bonitasoft S.A.</name>
+		<url>http://www.bonitasoft.com/</url>
+	</organization>
+
+	<licenses>
+		<license>
+			<name>GNU Lesser General Public License Version 2.1</name>
+			<url>http://www.gnu.org/licenses/lgpl-2.1.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<organization>Bonitasoft S.A.</organization>
+			<organizationUrl>http://www.bonitasoft.com</organizationUrl>
+		</developer>
+	</developers>
 
 	<properties>
 		<bonita.engine.version>7.2.0-SNAPSHOT</bonita.engine.version>
@@ -51,7 +74,64 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.4</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.10.3</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
+	
+	<profiles>
+		<profile>
+			<id>sign-artifacts</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.5</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
+
+	<scm>
+		<connection>scm:git:git@github.com:bonitasoft/bonita-web-extensions.git</connection>
+		<developerConnection>scm:git:git@github.com:bonitasoft/bonita-web-extensions.git</developerConnection>
+		<url>git@github.com:bonitasoft/bonita-web-extensions.git</url>
+	</scm>
 
 </project>
