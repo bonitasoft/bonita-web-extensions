@@ -15,35 +15,26 @@
 package org.bonitasoft.web.extension.page;
 
 import java.io.File;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 import org.bonitasoft.engine.api.PageAPI;
 import org.bonitasoft.engine.page.Page;
 import org.bonitasoft.engine.page.PageNotFoundException;
-import org.bonitasoft.web.extension.rest.ResourceProvider;
+import org.bonitasoft.web.extension.ResourceProvider;
 
 /**
- * This interface provide access to the resources contained in the custom page zip
+ * This interface provide access to the resources contained in the extension zip
+ * @since 7.2.0
  */
-public interface PageResourceProvider extends org.bonitasoft.console.common.server.page.PageResourceProvider, ResourceProvider {
+public interface PageResourceProvider extends ResourceProvider {
 
-    @Override
     String getBonitaThemeCSSURL();
 
-    @Override
     File getPageDirectory();
 
-    @Override
-    ResourceBundle getResourceBundle(final String name, final Locale locale);
-
-    @Override
     String getPageName();
 
-    @Override
     String getFullPageName();
 
-    @Override
     Page getPage(final PageAPI pageAPI) throws PageNotFoundException;
 
 }

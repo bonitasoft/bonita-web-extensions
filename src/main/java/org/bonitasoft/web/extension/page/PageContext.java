@@ -14,7 +14,29 @@
  */
 package org.bonitasoft.web.extension.page;
 
-public interface PageContext extends org.bonitasoft.console.common.server.page.PageContext {
+import java.util.Locale;
 
+import org.bonitasoft.engine.session.APISession;
+
+/**
+ * This class provide access to the data relative to the context in which the custom page is displayed
+ * @since 7.2.0
+ */
+public interface PageContext {
+
+    /**
+     * @return the engine {@link APISession}
+     */
+    APISession getApiSession();
+
+    /**
+     * @return the user locale
+     */
+    Locale getLocale();
+
+    /**
+     * @return the ID of the profile in which the page is currently displayed
+     */
+    String getProfileID();
 
 }

@@ -8,6 +8,19 @@
  *******************************************************************************/
 package org.bonitasoft.web.extension.rest;
 
-public interface RestApiController extends org.bonitasoft.console.common.server.page.RestApiController {
+import javax.servlet.http.HttpServletRequest;
 
+public interface RestApiController {
+
+    /**
+     * Let the Rest API Extension parse request for specific attribute handling.
+     * 
+     * @param request the HTTP servlet request intended to be used as in a servlet
+     * @param responseBuilder a builder for HTTP response
+     * @param context to access the current execution context data like current session,locale...
+     * @return a RestApiResponse with a body, an HTTP status and other optional http content
+     * @since 7.2
+     */
+    RestApiResponse doHandle(HttpServletRequest request, RestApiResponseBuilder responseBuilder, RestAPIContext context);
+    
 }

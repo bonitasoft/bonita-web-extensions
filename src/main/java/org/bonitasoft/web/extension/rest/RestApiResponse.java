@@ -6,9 +6,9 @@ import java.util.Map;
 
 import javax.servlet.http.Cookie;
 
+import org.apache.commons.io.Charsets;
 import org.apache.http.HttpStatus;
-import org.restlet.data.CharacterSet;
-import org.restlet.data.MediaType;
+
 
 
 public interface RestApiResponse extends org.bonitasoft.console.common.server.page.RestApiResponse {
@@ -21,12 +21,12 @@ public interface RestApiResponse extends org.bonitasoft.console.common.server.pa
     /**
      * default character set
      */
-    String DEFAULT_CHARACTER_SET = CharacterSet.UTF_8.getName();
+    String DEFAULT_CHARACTER_SET = Charsets.UTF_8.name();
 
     /**
      * default media type
      */
-    String DEFAULT_MEDIA_TYPE = MediaType.APPLICATION_JSON.getName();
+    String DEFAULT_MEDIA_TYPE = "application/json";
 
     /**
      * @return the response content

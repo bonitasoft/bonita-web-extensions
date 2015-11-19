@@ -6,11 +6,13 @@
  * Bonitasoft, 32 rue Gustave Eiffel – 38000 Grenoble
  * or Bonitasoft US, 51 Federal Street, Suite 305, San Francisco, CA 94107
  *******************************************************************************/
-package org.bonitasoft.web.extension.rest;
+package org.bonitasoft.web.extension;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public interface ResourceProvider {
 
@@ -19,5 +21,7 @@ public interface ResourceProvider {
     File getResourceAsFile(final String resourceName);
 
     String getResourceURL(final String resourceName);
+    
+    ResourceBundle getResourceBundle(final String name, final Locale locale);
 
 }

@@ -19,6 +19,7 @@ import java.util.Locale;
 import org.bonitasoft.engine.bdm.BusinessObjectDaoCreationException;
 import org.bonitasoft.engine.bdm.dao.BusinessObjectDAO;
 import org.bonitasoft.engine.session.APISession;
+import org.bonitasoft.web.extension.ResourceProvider;
 
 /**
  * This class provide access to the data relative to the context in which the Rest API extension is called

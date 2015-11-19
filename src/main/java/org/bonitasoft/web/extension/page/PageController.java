@@ -8,6 +8,24 @@
  *******************************************************************************/
 package org.bonitasoft.web.extension.page;
 
-public interface PageController extends org.bonitasoft.console.common.server.page.PageController {
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+
+public interface PageController {
+	
+	/**
+     * Let the custom page parse request for specific attribute handling.
+     *
+     * @param request
+     *            the HTTP servlet request intended to be used as in a servlet
+     * @param response
+     *            the HTTP servlet response intended to be used as in a servlet
+     * @param pageResourceProvider
+     *            provide access to the resources contained in the custom page zip
+     * @param pageContext
+     *            provide access to the data relative to the context in which the custom page is displayed
+     */
+    void doGet(HttpServletRequest request, HttpServletResponse response, PageResourceProvider pageResourceProvider, PageContext pageContext);
+	
 }
