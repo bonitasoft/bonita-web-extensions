@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 import javax.servlet.http.Cookie;
 
+/**
+ * @deprecated As of Release 7.2.0, replaced by {@link org.bonitasoft.web.extension.rest.RestApiResponseBuilder}
+ */
 @Deprecated
 public interface RestApiResponseBuilder {
 

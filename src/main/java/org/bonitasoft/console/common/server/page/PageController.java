@@ -17,6 +17,9 @@ package org.bonitasoft.console.common.server.page;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * @deprecated As of Release 7.2.0, replaced by {@link org.bonitasoft.web.extension.page.PageController}
+ */
 @Deprecated
 public interface PageController {
 

@@ -22,7 +22,7 @@ import org.bonitasoft.engine.session.APISession;
  * This class provide access to the data relative to the context in which the custom page is displayed
  *
  * @author Anthony Birembaut
- *
+ * @deprecated As of Release 7.2.0, replaced by {@link org.bonitasoft.web.extension.page.PageContext}
  */
 @Deprecated
 public interface PageContext {
