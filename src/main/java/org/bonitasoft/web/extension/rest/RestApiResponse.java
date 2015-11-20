@@ -1,12 +1,12 @@
 package org.bonitasoft.web.extension.rest;
 
 import java.io.Serializable;
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
 
-import org.apache.commons.io.Charsets;
 import org.apache.http.HttpStatus;
 
 
@@ -21,7 +21,7 @@ public interface RestApiResponse extends org.bonitasoft.console.common.server.pa
     /**
      * default character set
      */
-    String DEFAULT_CHARACTER_SET = Charsets.UTF_8.name();
+    String DEFAULT_CHARACTER_SET = Charset.forName("UTF-8").name();
 
     /**
      * default media type
