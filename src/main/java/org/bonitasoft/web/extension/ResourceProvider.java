@@ -14,6 +14,9 @@ import java.io.InputStream;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+/**
+ * @since 7.2.0
+ */
 public interface ResourceProvider {
 
     InputStream getResourceAsStream(final String resourceName) throws FileNotFoundException;
@@ -21,7 +24,7 @@ public interface ResourceProvider {
     File getResourceAsFile(final String resourceName);
 
     String getResourceURL(final String resourceName);
-    
+
     ResourceBundle getResourceBundle(final String name, final Locale locale);
 
 }

@@ -23,6 +23,8 @@ import org.bonitasoft.web.extension.ResourceProvider;
 
 /**
  * This class provide access to the data relative to the context in which the Rest API extension is called
+ *
+ * @since 7.2.0
  */
 public interface RestAPIContext {
 
@@ -43,7 +45,7 @@ public interface RestAPIContext {
 
     /**
      * A Business Object DAO Factory to instantiate DAO.
-     * 
+     *
      * @param daoInterface, the BusinessObjectDAO interface class of the DAO to instantiate
      * @return an instance of the DAO
      * @throws BusinessObjectDaoCreationException if instantiation failed.
