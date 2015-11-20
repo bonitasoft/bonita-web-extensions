@@ -4,20 +4,52 @@ import java.io.Serializable;
 
 import javax.servlet.http.Cookie;
 
-public interface RestApiResponseBuilder {
+public class RestApiResponseBuilder extends org.bonitasoft.console.common.server.page.RestApiResponseBuilder {
 
-    RestApiResponseBuilder withResponse(Serializable response);
+    @Override
+    public RestApiResponseBuilder withResponse(Serializable response) {
+        this.response = response;
+        return this;
+    }
 
-    RestApiResponseBuilder withResponseStatus(int httpStatus);
+    @Override
+    public RestApiResponseBuilder withResponseStatus(int httpStatus) {
+        this.httpStatus = httpStatus;
+        return this;
+    }
 
-    RestApiResponseBuilder withAdditionalHeader(String headerName, String headerValue);
+    @Override
+    public RestApiResponseBuilder withAdditionalHeader(String headerName, String headerValue) {
+        additionalHeaders.put(headerName, headerValue);
+        return this;
+    }
 
-    RestApiResponseBuilder withAdditionalCookie(Cookie cookie);
+    @Override
+    public RestApiResponseBuilder withAdditionalCookie(Cookie cookie) {
+        additionalCookies.add(cookie);
+        return this;
+    }
 
-    RestApiResponseBuilder withCharacterSet(String characterSet);
+    @Override
+    public RestApiResponseBuilder withCharacterSet(String characterSet) {
+        this.characterSet = characterSet;
+        return this;
+    }
 
-    RestApiResponseBuilder withMediaType(String mediaType);
+    @Override
+    public RestApiResponseBuilder withMediaType(String mediaType) {
+        this.mediaType = mediaType;
+        return this;
+    }
 
-    RestApiResponse build();
+    /*
+     * (non-Javadoc)
+     * @see org.bonitasoft.console.common.server.page.RestApiResponseBuilder#build()
+     */
+    @Override
+    public org.bonitasoft.web.extension.rest.RestApiResponse build() {
+        return new org.bonitasoft.web.extension.rest.RestApiResponse(response, httpStatus, additionalHeaders, additionalCookies, mediaType,
+                characterSet);
+    }
 
 }

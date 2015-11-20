@@ -9,54 +9,62 @@ import javax.servlet.http.Cookie;
 
 import org.apache.http.HttpStatus;
 
-/**
- * @author Laurent Leseigneur
- */
+
 @Deprecated
-public interface RestApiResponse {
+public class RestApiResponse {
 
     /**
      * default http status code
      */
-    int DEFAULT_STATUS = HttpStatus.SC_OK;
+    public static int DEFAULT_STATUS = HttpStatus.SC_OK;
 
     /**
      * default character set
      */
-    String DEFAULT_CHARACTER_SET = Charset.forName("UTF-8").name();
+    public static String DEFAULT_CHARACTER_SET = Charset.forName("UTF-8").name();
 
     /**
      * default media type
      */
-    String DEFAULT_MEDIA_TYPE = "application/json";
+    public static String DEFAULT_MEDIA_TYPE = "application/json";
 
-    /**
-     * @return the response content
-     */
-    Serializable getResponse();
+    private final Serializable response;
+    private final int httpStatus;
+    private final Map<String, String> additionalHeaders;
+    private final List<Cookie> additionalCookies;
+    private final String mediaType;
+    private final String characterSet;
 
-    /**
-     * @return http status code default value is DEFAULT_STATUS
-     */
-    int getHttpStatus();
+    public RestApiResponse(Serializable response, int httpStatus, Map<String, String> additionalHeaders, List<Cookie> additionalCookies, String mediaType, String characterSet) {
+        this.response = response;
+        this.httpStatus = httpStatus;
+        this.additionalHeaders = additionalHeaders;
+        this.additionalCookies = additionalCookies;
+        this.mediaType = mediaType;
+        this.characterSet = characterSet;
+    }
 
-    /**
-     * @return a map of additional headers
-     */
-    Map<String, String> getAdditionalHeaders();
+    public Serializable getResponse() {
+        return response;
+    }
 
-    /**
-     * @return a list of cookies
-     */
-    List<Cookie> getAdditionalCookies();
+    public int getHttpStatus() {
+        return httpStatus;
+    }
 
-    /**
-     * @return characterSet default to "UTF-8"
-     */
-    String getCharacterSet();
+    public Map<String, String> getAdditionalHeaders() {
+        return additionalHeaders;
+    }
 
-    /**
-     * @return media type default to "application/json"
-     */
-    String getMediaType();
+    public List<Cookie> getAdditionalCookies() {
+        return additionalCookies;
+    }
+
+    public String getCharacterSet() {
+        return characterSet;
+    }
+
+    public String getMediaType() {
+        return mediaType;
+    }
 }
