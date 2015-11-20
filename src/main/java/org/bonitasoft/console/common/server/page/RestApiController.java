@@ -16,6 +16,9 @@ package org.bonitasoft.console.common.server.page;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * @deprecated As of Release 7.2.0, replaced by {@link org.bonitasoft.web.extension.rest.RestApiController}
+ */
 @Deprecated
 public interface RestApiController {
 
