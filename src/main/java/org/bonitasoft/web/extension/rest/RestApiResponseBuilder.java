@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 import javax.servlet.http.Cookie;
 
+/**
+ * @since 7.2.0
+ */
 public interface RestApiResponseBuilder {
 
     RestApiResponseBuilder withResponse(Serializable response);

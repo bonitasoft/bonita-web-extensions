@@ -22,7 +22,9 @@ import org.bonitasoft.engine.bdm.dao.BusinessObjectDAO;
 import org.bonitasoft.engine.session.APISession;
 import org.bonitasoft.web.extension.page.PageResourceProvider;
 
-
+/**
+ * @since 7.2.0
+ */
 public class RestAPIContextImpl implements RestAPIContext {
 
     private final APISession apiSession;
@@ -30,7 +32,7 @@ public class RestAPIContextImpl implements RestAPIContext {
     private final BusinessObjectDAOFactory daoFactory;
     private final PageResourceProvider resourceProvider;
 
-    protected RestAPIContextImpl(final APISession apiSession, final Locale locale, PageResourceProvider resourceProvider, BusinessObjectDAOFactory daoFactory) {
+    protected RestAPIContextImpl(final APISession apiSession, final Locale locale, final PageResourceProvider resourceProvider, final BusinessObjectDAOFactory daoFactory) {
         this.apiSession = apiSession;
         this.locale = locale;
         this.daoFactory = daoFactory;
@@ -57,7 +59,7 @@ public class RestAPIContextImpl implements RestAPIContext {
      * @see org.bonitasoft.console.common.server.page.RestAPIContext#createBusinessObjectDAO(java.lang.Class)
      */
     @Override
-    public <T extends BusinessObjectDAO> T createBusinessObjectDAO(Class<T> daoInterface) throws BusinessObjectDaoCreationException {
+    public <T extends BusinessObjectDAO> T createBusinessObjectDAO(final Class<T> daoInterface) throws BusinessObjectDaoCreationException {
         return daoFactory.createDAO(apiSession, daoInterface);
     }
 

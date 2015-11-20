@@ -9,8 +9,9 @@ import javax.servlet.http.Cookie;
 
 import org.apache.http.HttpStatus;
 
-
-
+/**
+ * @since 7.2.0
+ */
 public interface RestApiResponse extends org.bonitasoft.console.common.server.page.RestApiResponse {
 
     /**

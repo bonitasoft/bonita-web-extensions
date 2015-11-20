@@ -11,9 +11,11 @@ package org.bonitasoft.web.extension.page;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+/**
+ * @since 7.2.0
+ */
 public interface PageController {
-	
+
 	/**
      * Let the custom page parse request for specific attribute handling.
      *
@@ -27,5 +29,5 @@ public interface PageController {
      *            provide access to the data relative to the context in which the custom page is displayed
      */
     void doGet(HttpServletRequest request, HttpServletResponse response, PageResourceProvider pageResourceProvider, PageContext pageContext);
-	
+
 }
