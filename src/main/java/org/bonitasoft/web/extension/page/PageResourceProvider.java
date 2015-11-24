@@ -27,14 +27,29 @@ import org.bonitasoft.web.extension.ResourceProvider;
  */
 public interface PageResourceProvider extends ResourceProvider {
 
+    /**
+     * The URL of the CSS used as Bonita Theme.
+     */
     String getBonitaThemeCSSURL();
 
+    /**
+     * The folder where the extension is deployed.
+     */
     File getPageDirectory();
 
+    /**
+     * The page name. Set in the page.properties of the extension.
+     */
     String getPageName();
 
+    /**
+     * The page name with the process definition ID as prefix (format = p%PROCESS_DEF_ID_%pageName).
+     */
     String getFullPageName();
 
+    /**
+     * The deployed {@link Page} for this extension.
+     */
     Page getPage(final PageAPI pageAPI) throws PageNotFoundException;
 
 }

@@ -23,6 +23,8 @@ import org.bonitasoft.web.extension.ResourceProvider;
 
 /**
  * This class provide access to the data relative to the context in which the Rest API extension is called
+ * 
+ * @since 7.2.0
  */
 public interface RestAPIContext {
 
