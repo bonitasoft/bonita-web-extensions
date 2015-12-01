@@ -16,6 +16,7 @@ package org.bonitasoft.web.extension.rest;
 
 import java.util.Locale;
 
+import org.bonitasoft.engine.api.APIClient;
 import org.bonitasoft.engine.bdm.BusinessObjectDaoCreationException;
 import org.bonitasoft.engine.bdm.dao.BusinessObjectDAO;
 import org.bonitasoft.engine.session.APISession;
@@ -23,8 +24,15 @@ import org.bonitasoft.web.extension.ResourceProvider;
 
 /**
  * This class provide access to the data relative to the context in which the Rest API extension is called
+ *
+ * @since 7.2.0
  */
 public interface RestAPIContext {
+
+    /**
+     * @return an engine {@link APIClient} logged to the current {@link APISession}
+     */
+    public APIClient getAPIClient();
 
     /**
      * @return Current engine {@link APISession}
@@ -43,7 +51,7 @@ public interface RestAPIContext {
 
     /**
      * A Business Object DAO Factory to instantiate DAO.
-     * 
+     *
      * @param daoInterface, the BusinessObjectDAO interface class of the DAO to instantiate
      * @return an instance of the DAO
      * @throws BusinessObjectDaoCreationException if instantiation failed.
