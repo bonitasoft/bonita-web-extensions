@@ -17,6 +17,8 @@ package org.bonitasoft.web.extension.rest;
 import java.util.Locale;
 
 import org.bonitasoft.engine.api.APIClient;
+import org.bonitasoft.engine.api.IdentityAPI;
+import org.bonitasoft.engine.api.ProcessAPI;
 import org.bonitasoft.engine.session.APISession;
 import org.bonitasoft.web.extension.ResourceProvider;
 
@@ -28,6 +30,13 @@ import org.bonitasoft.web.extension.ResourceProvider;
 public interface RestAPIContext {
 
     /**
+     * The {@link APIClient} is used to access business data and Bonita BPM APIs such as:
+     * <ul>
+     * <li>{@link IdentityAPI},</li>
+     * <li>{@link ProcessAPI},</li>
+     * <li>...</li>
+     * </ul>
+     * 
      * @return an engine {@link APIClient} logged to the current {@link APISession}
      */
     public APIClient getApiClient();
