@@ -32,7 +32,7 @@ public interface RestAPIContext {
     /**
      * @return an engine {@link APIClient} logged to the current {@link APISession}
      */
-    public APIClient getAPIClient();
+    public APIClient getApiClient();
 
     /**
      * @return Current engine {@link APISession}
