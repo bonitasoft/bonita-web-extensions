@@ -17,8 +17,6 @@ package org.bonitasoft.web.extension.rest;
 import java.util.Locale;
 
 import org.bonitasoft.engine.api.APIClient;
-import org.bonitasoft.engine.bdm.BusinessObjectDaoCreationException;
-import org.bonitasoft.engine.bdm.dao.BusinessObjectDAO;
 import org.bonitasoft.engine.session.APISession;
 import org.bonitasoft.web.extension.ResourceProvider;
 
@@ -48,14 +46,5 @@ public interface RestAPIContext {
      * @return a {@link ResourceProvider} to retrieve resources location
      */
     public ResourceProvider getResourceProvider();
-
-    /**
-     * A Business Object DAO Factory to instantiate DAO.
-     *
-     * @param daoInterface, the BusinessObjectDAO interface class of the DAO to instantiate
-     * @return an instance of the DAO
-     * @throws BusinessObjectDaoCreationException if instantiation failed.
-     */
-    public <T extends BusinessObjectDAO> T createBusinessObjectDAO(Class<T> daoInterface) throws BusinessObjectDaoCreationException;
 
 }
