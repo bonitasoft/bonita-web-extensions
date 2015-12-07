@@ -10,7 +10,6 @@
     <groupId>org.bonitasoft.web</groupId>
     <artifactId>bonita-web-extensions</artifactId>
     <version>7.2.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
 
     <name>Bonita Web Extensions</name>
     <description>Provide API to develop custom web extensions like pages and rest apis</description>
@@ -38,7 +37,6 @@
 
     <properties>
         <bonita.engine.version>7.2.0-SNAPSHOT</bonita.engine.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -120,9 +118,6 @@
     <profiles>
       <profile>
 			<id>deploy</id>
-			<modules>
-				<module>bpm</module>
-			</modules>
 			<build>
 				<plugins>
 					<plugin>
