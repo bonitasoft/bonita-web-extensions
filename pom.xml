@@ -36,7 +36,7 @@
     </developers>
 
     <properties>
-        <bonita.engine.version>${project.parent.version}</bonita.engine.version>
+        <bonita.engine.version>${project.version}</bonita.engine.version>
     </properties>
 
     <dependencies>
