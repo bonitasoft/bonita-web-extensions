@@ -37,6 +37,7 @@
 
     <properties>
         <bonita.engine.version>${project.version}</bonita.engine.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
