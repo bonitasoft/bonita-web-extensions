@@ -9,7 +9,7 @@
 
     <groupId>org.bonitasoft.web</groupId>
     <artifactId>bonita-web-extensions</artifactId>
-    <version>7.3.0-SNAPSHOT</version>
+    <version>7.3.0.alpha-04</version>
 
     <name>Bonita Web Extensions</name>
     <description>Provide API to develop custom web extensions like pages and rest apis</description>
