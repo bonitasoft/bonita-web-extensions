@@ -7,16 +7,13 @@ import java.util.Map;
 
 import javax.servlet.http.Cookie;
 
-import org.apache.http.HttpStatus;
-
-
 @Deprecated
 public class RestApiResponse {
 
     /**
      * default http status code
      */
-    public static int DEFAULT_STATUS = HttpStatus.SC_OK;
+    public static int DEFAULT_STATUS = 200;
 
     /**
      * default character set
@@ -35,7 +32,8 @@ public class RestApiResponse {
     private final String mediaType;
     private final String characterSet;
 
-    public RestApiResponse(Serializable response, int httpStatus, Map<String, String> additionalHeaders, List<Cookie> additionalCookies, String mediaType, String characterSet) {
+    public RestApiResponse(Serializable response, int httpStatus, Map<String, String> additionalHeaders, List<Cookie> additionalCookies, String mediaType,
+            String characterSet) {
         this.response = response;
         this.httpStatus = httpStatus;
         this.additionalHeaders = additionalHeaders;
