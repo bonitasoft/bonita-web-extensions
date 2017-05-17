@@ -13,17 +13,17 @@ public class RestApiResponse {
     /**
      * default http status code
      */
-    public static int DEFAULT_STATUS = 200;
+    public static final int DEFAULT_STATUS = 200;
 
     /**
      * default character set
      */
-    public static String DEFAULT_CHARACTER_SET = Charset.forName("UTF-8").name();
+    public static final String DEFAULT_CHARACTER_SET = Charset.forName("UTF-8").name();
 
     /**
      * default media type
      */
-    public static String DEFAULT_MEDIA_TYPE = "application/json";
+    public static final String DEFAULT_MEDIA_TYPE = "application/json";
 
     private final Serializable response;
     private final int httpStatus;
@@ -32,7 +32,8 @@ public class RestApiResponse {
     private final String mediaType;
     private final String characterSet;
 
-    public RestApiResponse(Serializable response, int httpStatus, Map<String, String> additionalHeaders, List<Cookie> additionalCookies, String mediaType,
+    public RestApiResponse(Serializable response, int httpStatus, Map<String, String> additionalHeaders,
+            List<Cookie> additionalCookies, String mediaType,
             String characterSet) {
         this.response = response;
         this.httpStatus = httpStatus;

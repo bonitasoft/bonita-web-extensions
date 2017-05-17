@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class RestApiResponseBuilder extends org.bonitasoft.console.common.server.page.RestApiResponseBuilder {
 
+    private int pageIndex = -1;
+    private int pageSize = -1;
+    private long totalSize = -1;
+
     /**
      * Set the body of the response
      * 
@@ -82,12 +86,46 @@ public class RestApiResponseBuilder extends org.bonitasoft.console.common.server
     }
 
     /**
+     * When returning a paged result, sets the start index and the page size.
+     * Setting content range overrides the Content-Range header of the response.
+     * 
+     * @param pageIndex the start index of the returned page.
+     * @param pageSize the size of the returned page.
+     * @return the {@link RestApiResponseBuilder}
+     */
+    public RestApiResponseBuilder withContentRange(int pageIndex, int pageSize) {
+        this.pageIndex = pageIndex;
+        this.pageSize = pageSize;
+        return this;
+    }
+
+    /**
+     * When returning a paged result, sets the start index, the page size and the total size.
+     * Setting content range overrides the Content-Range header of the response.
+     * 
+     * @param pageIndex the start index of the returned page.
+     * @param pageSize the size of the returned page.
+     * @param totalSize the total size of the requested entity.
+     * @return the {@link RestApiResponseBuilder}
+     */
+    public RestApiResponseBuilder withContentRange(int pageIndex, int pageSize, long totalSize) {
+        this.pageIndex = pageIndex;
+        this.pageSize = pageSize;
+        this.totalSize = totalSize;
+        return this;
+    }
+
+    /**
      * @return the RestApiResponse response
      */
     @Override
     public org.bonitasoft.web.extension.rest.RestApiResponse build() {
-        return new org.bonitasoft.web.extension.rest.RestApiResponse(response, httpStatus, additionalHeaders, additionalCookies, mediaType,
-                characterSet);
+        if (pageIndex >= 0 && pageSize >= 0) {
+            additionalHeaders.put("Content-Range",
+                    String.format("%s-%s/%s", pageIndex, pageSize, totalSize >= 0 ? totalSize : "*"));
+        }
+        return new org.bonitasoft.web.extension.rest.RestApiResponse(response, httpStatus, additionalHeaders,
+                additionalCookies, mediaType, characterSet);
     }
 
 }
