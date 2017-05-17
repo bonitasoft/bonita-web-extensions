@@ -59,7 +59,8 @@ public class RestApiResponseTest {
                 .build();
 
         //then
-        assertThat(response.getAdditionalHeaders()).hasSize(2).contains(entry("x-header1", "value1"), entry("x-header1", "value1"));
+        assertThat(response.getAdditionalHeaders()).hasSize(2).contains(entry("x-header1", "value1"),
+                entry("x-header1", "value1"));
     }
 
     @Test
@@ -102,5 +103,47 @@ public class RestApiResponseTest {
         //then
         RestApiResponseAssert.assertThat(response).hasMediaType(mediaType);
 
+    }
+
+    @Test
+    public void should_not_set_range_when_pageSize_not_set() throws Exception {
+        //when
+        final RestApiResponse response = restApiResponseBuilder.withContentRange(0, -1)
+                .build();
+
+        //then
+        assertThat(response.getAdditionalHeaders()).doesNotContainKey("Content-Range");
+    }
+
+    @Test
+    public void should_not_set_range_when_pageIndex_not_set() throws Exception {
+        //when
+        final RestApiResponse response = restApiResponseBuilder.withContentRange(-1, 10)
+                .build();
+
+        //then
+        assertThat(response.getAdditionalHeaders()).doesNotContainKey("Content-Range");
+    }
+
+    @Test
+    public void should_set_range_when_pageIndex_and_pageSize_is_set() throws Exception {
+        //when
+        final RestApiResponse response = restApiResponseBuilder
+                .withContentRange(0, 10)
+                .build();
+
+        //then
+        assertThat(response.getAdditionalHeaders()).contains(entry("Content-Range", "0-10/*"));
+    }
+
+    @Test
+    public void should_set_range_when_pageIndex_and_pageSize_and_totalSize_is_set() throws Exception {
+        //when
+        final RestApiResponse response = restApiResponseBuilder
+                .withContentRange(0, 10, 100)
+                .build();
+
+        //then
+        assertThat(response.getAdditionalHeaders()).contains(entry("Content-Range", "0-10/100"));
     }
 }
