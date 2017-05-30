@@ -30,7 +30,7 @@ import org.bonitasoft.web.extension.ResourceProvider;
 public interface RestAPIContext {
 
     /**
-     * The {@link APIClient} is used to access business data and Bonita BPM APIs such as:
+     * The {@link APIClient} is used to access business data and Bonita APIs such as:
      * <ul>
      * <li>{@link IdentityAPI},</li>
      * <li>{@link ProcessAPI},</li>
