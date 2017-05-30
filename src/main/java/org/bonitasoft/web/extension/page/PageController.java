@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * The interface to implement for a Custom Page in Bonita BPM.
+ * The interface to implement for a Custom Page in Bonita.
  */
 public interface PageController {
 	
