@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2015 BonitaSoft S.A.
+ * Copyright (C) 2015-2019 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,7 +16,6 @@ package org.bonitasoft.console.common.server.page;
 
 import java.util.logging.Logger;
 
-
 @Deprecated
 public interface RestApiUtil {
 
@@ -26,6 +25,5 @@ public interface RestApiUtil {
      * provide a default logger
      */
     Logger getLogger();
-
 
 }

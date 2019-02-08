@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2014 BonitaSoft S.A.
+ * Copyright (C) 2014-2019 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,14 +19,13 @@ import java.util.Locale;
 import org.bonitasoft.engine.session.APISession;
 
 /**
- * This class provide access to the data relative to the context in which the custom page is displayed
+ * Provides access to the data relative to the context in which the custom page is displayed
  *
  * @author Anthony Birembaut
- *
+ * @deprecated use {@link org.bonitasoft.web.extension.page.PageContext} instead
  */
 @Deprecated
 public interface PageContext {
-
 
     /**
      * @return the engine {@link APISession}
