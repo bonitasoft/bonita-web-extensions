@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (C) 2015 Bonitasoft S.A.
+ * Copyright (C) 2015-2019 Bonitasoft S.A.
  * Bonitasoft is a trademark of Bonitasoft SA.
  * This software file is BONITASOFT CONFIDENTIAL. Not For Distribution.
  * For commercial licensing information, contact:
@@ -21,12 +21,12 @@ public class RestApiResponseTest {
     RestApiResponseBuilder restApiResponseBuilder;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         restApiResponseBuilder = new RestApiResponseBuilder();
     }
 
     @Test
-    public void testGetResponse_with_default_values() throws Exception {
+    public void testGetResponse_with_default_values() {
         //when
         final RestApiResponse response = restApiResponseBuilder.withResponse("response").build();
 
@@ -42,7 +42,7 @@ public class RestApiResponseTest {
     }
 
     @Test
-    public void testGetHttpStatus() throws Exception {
+    public void testGetHttpStatus() {
         //when
         final RestApiResponse response = restApiResponseBuilder.withResponseStatus(404).build();
 
@@ -52,7 +52,7 @@ public class RestApiResponseTest {
     }
 
     @Test
-    public void testGetAdditionalHeaders() throws Exception {
+    public void testGetAdditionalHeaders() {
         //when
         final RestApiResponse response = restApiResponseBuilder.withAdditionalHeader("x-header1", "value1")
                 .withAdditionalHeader("x-header2", "value2")
@@ -64,7 +64,7 @@ public class RestApiResponseTest {
     }
 
     @Test
-    public void testGetAdditionalCookies() throws Exception {
+    public void testGetAdditionalCookies() {
         //when
         final Cookie cookie1 = new Cookie("name1", "value1");
         final Cookie cookie2 = new Cookie("name2", "value2");
@@ -75,11 +75,10 @@ public class RestApiResponseTest {
 
         //then
         RestApiResponseAssert.assertThat(response).hasAdditionalCookies(cookie1, cookie2);
-
     }
 
     @Test
-    public void testGetCharacterSet() throws Exception {
+    public void testGetCharacterSet() {
         //given
         final String characterSet = "utf-16";
 
@@ -92,7 +91,7 @@ public class RestApiResponseTest {
     }
 
     @Test
-    public void testGetMediaType() throws Exception {
+    public void testGetMediaType() {
         //when
         final String mediaType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
 
@@ -102,11 +101,10 @@ public class RestApiResponseTest {
 
         //then
         RestApiResponseAssert.assertThat(response).hasMediaType(mediaType);
-
     }
 
     @Test
-    public void should_not_set_range_when_pageSize_not_set() throws Exception {
+    public void should_not_set_range_when_pageSize_not_set() {
         //when
         final RestApiResponse response = restApiResponseBuilder.withContentRange(0, -1)
                 .build();
@@ -116,7 +114,7 @@ public class RestApiResponseTest {
     }
 
     @Test
-    public void should_not_set_range_when_pageIndex_not_set() throws Exception {
+    public void should_not_set_range_when_pageIndex_not_set() {
         //when
         final RestApiResponse response = restApiResponseBuilder.withContentRange(-1, 10)
                 .build();
@@ -126,7 +124,7 @@ public class RestApiResponseTest {
     }
 
     @Test
-    public void should_set_range_when_pageIndex_and_pageSize_is_set() throws Exception {
+    public void should_set_range_when_pageIndex_and_pageSize_is_set() {
         //when
         final RestApiResponse response = restApiResponseBuilder
                 .withContentRange(0, 10)
@@ -137,7 +135,7 @@ public class RestApiResponseTest {
     }
 
     @Test
-    public void should_set_range_when_pageIndex_and_pageSize_and_totalSize_is_set() throws Exception {
+    public void should_set_range_when_pageIndex_and_pageSize_and_totalSize_is_set() {
         //when
         final RestApiResponse response = restApiResponseBuilder
                 .withContentRange(0, 10, 100)
@@ -146,4 +144,5 @@ public class RestApiResponseTest {
         //then
         assertThat(response.getAdditionalHeaders()).contains(entry("Content-Range", "0-10/100"));
     }
+
 }

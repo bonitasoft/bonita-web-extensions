@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2015 Bonitasoft S.A.
+ * Copyright (C) 2015-2019 Bonitasoft S.A.
  * Bonitasoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,21 +39,21 @@ public interface RestAPIContext {
      * 
      * @return an engine {@link APIClient} logged to the current {@link APISession}
      */
-    public APIClient getApiClient();
+    APIClient getApiClient();
 
     /**
      * @return Current engine {@link APISession}
      */
-    public APISession getApiSession();
+    APISession getApiSession();
 
     /**
      * @return Current selected {@link Locale} in BonitaBPM Portal
      */
-    public Locale getLocale();
+    Locale getLocale();
 
     /**
      * @return a {@link ResourceProvider} to retrieve resources location
      */
-    public ResourceProvider getResourceProvider();
+    ResourceProvider getResourceProvider();
 
 }
