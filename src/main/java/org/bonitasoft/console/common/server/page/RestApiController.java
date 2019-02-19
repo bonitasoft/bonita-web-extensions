@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2015 Bonitasoft S.A.
+ * Copyright (C) 2015-2019 Bonitasoft S.A.
  * Bonitasoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,6 +16,9 @@ package org.bonitasoft.console.common.server.page;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * @deprecated use {@link org.bonitasoft.web.extension.rest.RestApiController} instead
+ */
 @Deprecated
 public interface RestApiController {
 
