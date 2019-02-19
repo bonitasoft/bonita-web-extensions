@@ -25,7 +25,9 @@ import org.bonitasoft.engine.page.Page;
 import org.bonitasoft.engine.page.PageNotFoundException;
 
 /**
- * This interface provide access to the resources contained in the custom page zip
+ * Provides access to the resources contained in the custom page zip
+ *
+ * @deprecated use {@link org.bonitasoft.web.extension.page.PageResourceProvider} instead
  */
 @Deprecated
 public interface PageResourceProvider {
