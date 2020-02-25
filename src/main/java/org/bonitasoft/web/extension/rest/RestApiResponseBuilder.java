@@ -14,26 +14,45 @@
  */
 package org.bonitasoft.web.extension.rest;
 
-import java.io.Serializable;
+import static org.bonitasoft.web.extension.rest.RestApiResponse.*;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  * Build a RestApiResponse specifying response body, status and other HTTP attributes.
  */
-public class RestApiResponseBuilder extends org.bonitasoft.console.common.server.page.RestApiResponseBuilder {
+public class RestApiResponseBuilder {
+
+    protected Serializable response;
+    protected int httpStatus;
+    protected final Map<String, String> additionalHeaders;
+    protected final List<Cookie> additionalCookies;
+    protected String characterSet;
+    protected String mediaType;
 
     private int pageIndex = -1;
     private int pageSize = -1;
     private long totalSize = -1;
+
+    public RestApiResponseBuilder() {
+        this.httpStatus = DEFAULT_STATUS;
+        this.additionalHeaders = new HashMap<>();
+        this.additionalCookies = new ArrayList<>();
+        this.characterSet = DEFAULT_CHARACTER_SET;
+        this.mediaType = DEFAULT_MEDIA_TYPE;
+    }
 
     /**
      * Set the body of the response
      * 
      * @param response the response body
      */
-    @Override
     public RestApiResponseBuilder withResponse(Serializable response) {
         this.response = response;
         return this;
@@ -45,7 +64,6 @@ public class RestApiResponseBuilder extends org.bonitasoft.console.common.server
      * @param httpStatus the HTTP status of the response
      * @see HttpServletResponse
      */
-    @Override
     public RestApiResponseBuilder withResponseStatus(int httpStatus) {
         this.httpStatus = httpStatus;
         return this;
@@ -58,7 +76,6 @@ public class RestApiResponseBuilder extends org.bonitasoft.console.common.server
      * @param value the value for this header
      * @see org.apache.http.HttpHeaders
      */
-    @Override
     public RestApiResponseBuilder withAdditionalHeader(String name, String value) {
         additionalHeaders.put(name, value);
         return this;
@@ -69,7 +86,6 @@ public class RestApiResponseBuilder extends org.bonitasoft.console.common.server
      * 
      * @param cookie the {@link javax.servlet.http.Cookie} to add to the response
      */
-    @Override
     public RestApiResponseBuilder withAdditionalCookie(Cookie cookie) {
         additionalCookies.add(cookie);
         return this;
@@ -81,7 +97,6 @@ public class RestApiResponseBuilder extends org.bonitasoft.console.common.server
      * @param characterSet the name of the character set
      * @see java.nio.charset.Charset
      */
-    @Override
     public RestApiResponseBuilder withCharacterSet(String characterSet) {
         this.characterSet = characterSet;
         return this;
@@ -93,7 +108,6 @@ public class RestApiResponseBuilder extends org.bonitasoft.console.common.server
      * @param mediaType the media type to set.
      * @see <a href="http://www.iana.org/assignments/media-types/media-types.xhtml">Registered media types</a>
      */
-    @Override
     public RestApiResponseBuilder withMediaType(String mediaType) {
         this.mediaType = mediaType;
         return this;
@@ -132,14 +146,12 @@ public class RestApiResponseBuilder extends org.bonitasoft.console.common.server
     /**
      * @return the RestApiResponse response
      */
-    @Override
-    public org.bonitasoft.web.extension.rest.RestApiResponse build() {
+    public RestApiResponse build() {
         if (pageIndex >= 0 && pageSize >= 0) {
             additionalHeaders.put("Content-Range",
                     String.format("%s-%s/%s", pageIndex, pageSize, totalSize >= 0 ? totalSize : "*"));
         }
-        return new org.bonitasoft.web.extension.rest.RestApiResponse(response, httpStatus, additionalHeaders,
-                additionalCookies, mediaType, characterSet);
+        return new RestApiResponse(response, httpStatus, additionalHeaders, additionalCookies, mediaType, characterSet);
     }
 
 }
